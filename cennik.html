@@ -124,15 +124,11 @@
     </div>
   </div>
 </footer>
-<div class="cookies" id="cookies" hidden><span>Strona używa plików cookies, m.in. do wyświetlenia mapy Google. Szczegóły w polityce prywatności.</span><button type="button" id="cookies-ok">Rozumiem</button></div>
 <script>
 (function(){
   var g=document.getElementById('gora'),b=g.querySelector('.przelacznik');
   b.addEventListener('click',function(){var o=g.classList.toggle('otwarte');b.setAttribute('aria-expanded',o)});
   g.querySelectorAll('.menu a').forEach(function(a){a.addEventListener('click',function(){g.classList.remove('otwarte');b.setAttribute('aria-expanded','false')})});
-  var c=document.getElementById('cookies');
-  try{if(!localStorage.getItem('tdu-cookies'))c.hidden=false}catch(e){c.hidden=false}
-  document.getElementById('cookies-ok').addEventListener('click',function(){c.hidden=true;try{localStorage.setItem('tdu-cookies','1')}catch(e){}});
   document.querySelectorAll('.galeria').forEach(function(el){
     var x0,s0,ciagnie=false;
     el.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;ciagnie=true;x0=e.clientX;s0=el.scrollLeft;el.classList.add('ciagniete')});
@@ -144,7 +140,9 @@
     btn.addEventListener('click',function(){var el=document.getElementById(btn.getAttribute('data-cel'));var f=el.querySelector('figure');el.scrollBy({left:(f.offsetWidth+14)*(+btn.getAttribute('data-przewin')),behavior:'smooth'})});
   });
   var m=document.querySelector('.mapa[data-src]');
-  if(m&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){m.innerHTML='<iframe title="Mapa dojazdu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="'+m.getAttribute('data-src')+'"></iframe>';io.disconnect()}},{rootMargin:'300px'});io.observe(m)}
+  function pokazMape(){m.innerHTML='<iframe title="Mapa dojazdu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="'+m.getAttribute('data-src')+'"></iframe>'}
+  if(m){var zg=false;try{zg=localStorage.getItem('tdu-mapa')==='1'}catch(e){}
+    if(zg)pokazMape();else m.querySelector('button').addEventListener('click',function(){try{localStorage.setItem('tdu-mapa','1')}catch(e){}pokazMape()})}
   document.querySelectorAll('form[data-pokaz]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var p=f.querySelector('.potwierdzenie');p.hidden=false})});
 })();
 </script>
