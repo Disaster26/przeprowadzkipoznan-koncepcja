@@ -132,10 +132,6 @@
   document.querySelectorAll('[data-przewin]').forEach(function(btn){
     btn.addEventListener('click',function(){var el=document.getElementById(btn.getAttribute('data-cel'));var f=el.querySelector('figure');el.scrollBy({left:(f.offsetWidth+14)*(+btn.getAttribute('data-przewin')),behavior:'smooth'})});
   });
-  var m=document.querySelector('.mapa[data-src]');
-  function pokazMape(){m.innerHTML='<iframe title="Mapa dojazdu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="'+m.getAttribute('data-src')+'"></iframe>'}
-  if(m){var zg=false;try{zg=localStorage.getItem('tdu-mapa')==='1'}catch(e){}
-    if(zg)pokazMape();else m.querySelector('button').addEventListener('click',function(){try{localStorage.setItem('tdu-mapa','1')}catch(e){}pokazMape()})}
   document.querySelectorAll('form[data-pokaz]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var p=f.querySelector('.potwierdzenie');p.hidden=false})});
 })();
 </script>

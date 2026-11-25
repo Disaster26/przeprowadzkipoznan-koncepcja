@@ -192,7 +192,6 @@ p{margin:0}
 .dane dd a{text-decoration:none}
 .dane dd a:hover{color:var(--czerwien)}
 .mapa{margin-top:28px;aspect-ratio:16/10;background:var(--chlodna);border:1px solid var(--linia)}
-.mapa-zgoda{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center;background:#E4E7EB;color:var(--szary);font-size:16px}
 .mapa iframe{width:100%;height:100%;border:0;display:block}
 @media (max-width:900px){.kontakt{grid-template-columns:1fr}}
 @media (max-width:520px){.formularz{grid-template-columns:1fr}.formularz .btn{width:100%}}

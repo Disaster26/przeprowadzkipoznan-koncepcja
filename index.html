@@ -167,7 +167,7 @@
         <div><dt>Adres</dt><dd>Os. Przyjaźni 12/205, 61-686 Poznań</dd></div>
         <div><dt>Godziny</dt><dd>pon.-pt. 8:00-21:00<br>sob.-niedz. 8:00-18:00</dd></div>
       </dl>
-      <div class="mapa" data-src="https://maps.google.com/maps?q=Os.%20Przyja%C5%BAni%2012%2C%2061-686%20Pozna%C5%84&amp;z=14&amp;output=embed"><div class="mapa-zgoda"><p>Mapa Google zapisuje pliki cookies</p><button type="button" class="btn btn-ciemny">Pokaż mapę</button></div></div>
+      <div class="mapa"><iframe title="Mapa dojazdu - Os. Przyjaźni 12, Poznań" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Os.%20Przyja%C5%BAni%2012%2C%2061-686%20Pozna%C5%84&amp;z=14&amp;output=embed"></iframe></div>
     </div>
   </div>
 </section>
@@ -214,10 +214,6 @@
   document.querySelectorAll('[data-przewin]').forEach(function(btn){
     btn.addEventListener('click',function(){var el=document.getElementById(btn.getAttribute('data-cel'));var f=el.querySelector('figure');el.scrollBy({left:(f.offsetWidth+14)*(+btn.getAttribute('data-przewin')),behavior:'smooth'})});
   });
-  var m=document.querySelector('.mapa[data-src]');
-  function pokazMape(){m.innerHTML='<iframe title="Mapa dojazdu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="'+m.getAttribute('data-src')+'"></iframe>'}
-  if(m){var zg=false;try{zg=localStorage.getItem('tdu-mapa')==='1'}catch(e){}
-    if(zg)pokazMape();else m.querySelector('button').addEventListener('click',function(){try{localStorage.setItem('tdu-mapa','1')}catch(e){}pokazMape()})}
   document.querySelectorAll('form[data-pokaz]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var p=f.querySelector('.potwierdzenie');p.hidden=false})});
 })();
 </script>
